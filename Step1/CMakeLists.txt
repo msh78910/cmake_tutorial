@@ -1,10 +1,28 @@
 # TODO1: Set the minimum required version of CMake to be 3.23
+cmake_minimum_required(VERSION 3.23)
 
 # TODO2: Create a project named Tutorial
+project (MyProgram)
 
 # TODO3: Add an executable target called Tutorial to the project
+add_executable(Tutorial)
 
 # TODO4: Add the Tutorial/Tutorial.cxx source file to the Tutorial target
+target_sources(Tutorial
+    PRIVATE
+        Tutorial/Tutorial.cxx
+
+    # PUBLIC
+    #     FILE_SET    
+    #         xxx
+    #     TYPE        
+    #         HEADERS
+    #     BASE_DIRS
+    #         Tutorial
+    #     FILES
+    #         Tutorial/Tutorial.cxx
+        
+)
 
 # TODO7: Add the MathFunctions library as a linked dependency
 #        to the Tutorial target
