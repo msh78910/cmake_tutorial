@@ -37,7 +37,7 @@ target_sources(MathFunctions
             myHEADERS
         TYPE 
             HEADERS                 # not HEADE'R'      برای تعیین نوع (هدر ها و ماژول های سی‌پلاس‌پلاس-20) استفاده میشه
-        BASE_DIRS                   # not BASE_DI'R'
+        BASE_DIRS                   # not BASE_DI'R'    (وقتی نیست، یعنی همین پوشه فعلی)
             MathFunctions           #                   اینجا جایی هست که نحوه <آدرس دهی> محتوای داخل #include
                                     #                   رو مشخص می‌کنیم. همون پوشه Header هاست که با این flag مشخص می‌شد: -I
                                     #                   اگه می‌خوایم تمیز باشه و فقط اسم فایل رو بنویسیم، باید تا پوشه حاوی خود فایل
