@@ -20,6 +20,7 @@ target_sources(Tutorial
 
 # TODO7: Add the MathFunctions library as a linked dependency
 #        to the Tutorial target
+target_link_libraries(Tutorial PRIVATE MathFunctions)
 
 # TODO11: Add the Tutorial subdirectory to the project
 
