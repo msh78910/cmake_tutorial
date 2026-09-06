@@ -20,7 +20,9 @@ target_sources(Tutorial
 
 # TODO7: Add the MathFunctions library as a linked dependency
 #        to the Tutorial target
-target_link_libraries(Tutorial PRIVATE MathFunctions)
+target_link_libraries(Tutorial PRIVATE MathFunctions)   # ترتیب این اهمیتی نداره برای CMake
+                                                        # که این کد رو بعد از add_library() بیاریم یا قبلش.
+                                                        # تنها شرط اینه که اون تارگتی که میخواد ویرایش بشه قبلش باید تعریف شده باشه
 
 # TODO11: Add the Tutorial subdirectory to the project
 
