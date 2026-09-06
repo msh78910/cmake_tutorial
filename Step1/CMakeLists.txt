@@ -4,19 +4,8 @@ cmake_minimum_required(VERSION 3.23)
 # TODO2: Create a project named Tutorial
 project (MyProgram)
 
-# TODO3: Add an executable target called Tutorial to the project
-add_executable(Tutorial)
-
-# TODO4: Add the Tutorial/Tutorial.cxx source file to the Tutorial target
-target_sources(Tutorial
-    PRIVATE                     # PRIVATE همیشه برای فایل های cxx (executable , implimentation)
-        Tutorial/Tutorial.cxx
-    # PUBLIC
-    #     FILE_SET
-    #     TYPE
-    #     BASE_DIRS
-    #     FILES
-)
+# TODO 10: Move to subdirectory
+add_subdirectory(Tutorial)
 
 # TODO7: Add the MathFunctions library as a linked dependency
 #        to the Tutorial target
