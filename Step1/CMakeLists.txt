@@ -4,8 +4,7 @@ cmake_minimum_required(VERSION 3.23)
 # TODO2: Create a project named Tutorial
 project (MyProgram)
 
-# TODO 10: Move to subdirectory
-add_subdirectory(Tutorial)
+
 
 # TODO7: Add the MathFunctions library as a linked dependency
 #        to the Tutorial target
@@ -13,7 +12,10 @@ target_link_libraries(Tutorial PRIVATE MathFunctions)   # ترتیب این اه
                                                         # که این کد رو بعد از add_library() بیاریم یا قبلش.
                                                         # تنها شرط اینه که اون تارگتی که میخواد ویرایش بشه قبلش باید تعریف شده باشه
 
+
+# TODO 10: Move to subdirectory
 # TODO11: Add the Tutorial subdirectory to the project
+add_subdirectory(Tutorial)
 
 # TODO5: Add a library target called MathFunctions to the project
 add_library(MathFunctions)
