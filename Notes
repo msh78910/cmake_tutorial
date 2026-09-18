@@ -1,0 +1,52 @@
+<div dir='auto'>
+
+## زمان هایی که پاک کردن build نیازه:
+وقت هایی که cmake -B build به دلیل خرابی تنظیم متغیرهای envirornment مثل CC , CXX شکست میخورده و باید cache مخرب رو برای دفعه بعد پاک کنیم
+− هروقت یک محتوای جدید به CML قبلی اضافه می‌کنیم، نیازی به حذف build نیست. میشه از دستور cmake --build build ادامه بدیم.
+
+
+## معنی استفاده سه‌گانه از SCOPE_KEYWORD ها
+#### add_executable() / add_library() فصل ۵
+for add_library(Mylib <type>):
+* STATIC:
+کتابخانه رو به فایل نصبی می‌چسبانه
+* SHARED:
+هیچ کدی یا بخشی از کتابخانه به فایل اجرایی اضافه نمی شه بلکه فقط در زمان نیاز از یک فایل خارجی load میشه (مثل extension های chrome). همزمان سایر target ها هم می‌تونن link/include اش کنن و ازش استفاده کنن. 
+* MODULE: 
+مثل shared هاست اما با این فرق که سایر target ها دیگه نمی تونن ازش استفاده کنن
+* OBJECT:
+یک کالکشن از object file ها که یا آرشیو نشده اند ویا به کتابخانه‌ای link نشده اند.
+* INTERFACE: ۵٫۲
+یک library target که خودش build نمی‌شه و artifact نمی‌سازه. اما طرز استفاده موردنیاز برای سایر target ها رو بهشون می‌گه. 
+بنابراین همه property های یک کتابخانه INTERFACE باید خودشون هم INTERFACE باشن 
+
+#### target_sources():
+انواع ویژگی های property ها:
+* Private: 
+اون فایل‌ها/property هایی که قراره برای مصرف داخلی خود کتابخانه‌ها/اجرایی‌ها (target) (مالک owning targets) استفاده بشه. مثل executables, implimentations و کلا cxx ها
+* Interface:
+اونایی که فقط برای استفاده و دسترسی و دیده‌شدن توسط سایرین/خارجی ها و مصرف‌کننده‌ها (consuming targets) هستن. مثل Header-only library ها که اصلا build نمی‌شن
+* Public:
+اونایی که هم قراره در داخل کتابخانه دیده بشن و هم برای استفاده کنندگان خارجی
+
+#### target_link_library(myProgram PRIVATE myLibrary)
+target_link_directories(MyApp PRIVATE Vendor/lib)
+target_include_directories(MyApp PRIVATE Vendor/include)
+
+#### install()
+
+ثابت های مشابه مربوط به آدرس
+- Note Paths in CMake are generally either absolute, or relative to the CMAKE_CURRENT_SOURCE_DIR. We haven't talked about variables like that yet, so you can read this as "relative to the location of the current CML".
+- Note We add the CMAKE_CURRENT_BINARY_DIR, a variable which names the current location in the build tree where our artifacts are being placed, to the base directories because that's the working directory our code generator will be run inside of. Listing the FILES is unnecessary for the build and done so here only for clarity.
+- Note The CMAKE_CURRENT_LIST_DIR variable names the directory that the currently running CMake Language file is inside of, regardless of how that file was included or launched.
+- The best way to use find_package() is to ensure all dependencies have been installed to a single install tree prior to the build, and then make the location of that install tree known to find_package() via the CMAKE_PREFIX_PATH variable.
+
+Target Type 		Variable 			Built-In Default
+RUNTIME			${CMAKE_INSTALL_BINDIR}		bin
+LIBRARY			${CMAKE_INSTALL_LIBDIR}		lib
+ARCHIVE			${CMAKE_INSTALL_LIBDIR}		lib
+PRIVATE_HEADER		${CMAKE_INSTALL_INCLUDEDIR}	include
+PUBLIC_HEADER		${CMAKE_INSTALL_INCLUDEDIR}	include
+FILE_SET (type HEADERS)	${CMAKE_INSTALL_INCLUDEDIR}	include
+
+
