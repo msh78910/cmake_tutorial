@@ -24,6 +24,8 @@ target_link_libraries(Tutorial PRIVATE MathFunctions)   # ترتیب و محل �
                                                         
                                                         # (TODO_13) بعد از انتقال target ها به زیرپوشه ها، دیگه ترتیب دستورها برای سی‌میک مهم شد
 
+
+# (TODO_13): commenting the code down below:
 # TODO_10: Move to subdirectory
 # TODO11: Add the Tutorial subdirectory to the project
 # add_subdirectory(Tutorial)
