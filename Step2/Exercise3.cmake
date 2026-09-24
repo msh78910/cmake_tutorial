@@ -3,15 +3,19 @@ cmake_minimum_required(VERSION 3.23)
 
 # TODO4: Set the SKIP_TESTS variable to a true value, so that the tests from
 #        Exercise1 and Exercise2 are skipped
-
+set(SKIP_TESTS True)
 
 # TODO5: Include Exercise1.cmake and Exercise2.cmake
-
+include(Exercise1.cmake)
+include("Exercise2.cmake")                                    # میتونه هم با " " باشه و هم بدون اون. فرقی نداره include
 
 set(InList FooBar QuxBar)
 
 # TODO6: Append FooBaz and QuxBaz to InList with FuncAppend
-
+set(myList FooBaz QuxBaz)
+foreach(value IN LISTS myList)                                # foreach(value IN LISTS FooBaz QuxBaz) :این غلطه که بگیم
+  FuncAppend(InList ${value})                                 # چون اون متغیرها فقط میتونن اسم چندین لیست باشن، نه خود مقدارها
+endforeach()
 
 if(NOT InList STREQUAL "FooBar;QuxBar;FooBaz;QuxBaz")
   message(WARNING "Append failed, InList contains: ${InList}")
@@ -19,7 +23,7 @@ endif()
 
 
 # TODO7: Filter InList with FilterFoo, use OutList as the output variable
-
+FilterFoo(OutList ${InList})
 
 check_contains(FooBar)
 check_contains(FooBaz)
