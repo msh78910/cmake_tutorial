@@ -23,3 +23,6 @@ if(TUTORIAL_BUILD_UTILITIES)
 endif()
 
 add_subdirectory(MathFunctions)
+
+# To Run the configuration that supports "format" in CXX20: 
+# cmake -B build -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_CXX_STANDARD=20
