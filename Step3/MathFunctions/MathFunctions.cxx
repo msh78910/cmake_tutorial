@@ -1,6 +1,7 @@
 #include <iostream>
 
 // TODO6: Include <format>
+#include <format>
 
 namespace {
 // a hack square root calculation using simple operations
@@ -21,7 +22,9 @@ double mysqrt(double x)
     result = result + 0.5 * delta / result;
 
     // TODO7: Convert the print to use std::format
-    std::cout << "Computing sqrt of " << x << " to be " << result << std::endl;
+    std::string formatted_str = std::format("Computing sqrt of {} to be {}", x,result);
+    std::cout << formatted_str << std::endl;
+    // std::cout << "Computing sqrt of " << x << " to be " << result << std::endl;
   }
   return result;
 }
