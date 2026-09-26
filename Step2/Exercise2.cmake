@@ -11,7 +11,9 @@ function(FilterFoo OutVar)
                                                     # برای همین باید مثل سایر متغیرها با آکولاد بازش کنیم
     # if ("[Foo]+" IN_LIST ${ARGN})                 # کلمه IN_LIST دقیقا هر رشته ای که بدیم رو جستجو میکنه، نه REGEX را
     message("${arg} in loop")
-    if (${arg} MATCHES "[Foo]+")                    # چرا حتی بدون regex و " " هم قبول میکنه؟ چرا این regex حتی BazFodoBar رو هم pass میکنه؟
+    if (${arg} MATCHES "Foo")                       # چرا حتی بدون regex ([Foo]+) و " " هم قبول میکنه؟ چرا این regex حتی BazFodoBar رو هم pass میکنه؟ 
+                                                    # چون این یعنی حداقل یکبار حروف F, o «باهر ترتیبی» وجود داشته باشه. حتی oF!
+                                                    # اگه فقط خود کلمه Foo رو در هرکجای جمله بخواهیم، فقط باید بگیم "Foo" 
       list(APPEND ${OutVar} ${arg})                      # فقط با حروف بزرگ APPEND -- arg خالی غلطه. ${arg} درسته -- 
       message(appended)
     endif()
