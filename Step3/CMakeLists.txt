@@ -3,7 +3,12 @@ cmake_minimum_required(VERSION 3.23)
 project(Tutorial)
 
 # option(CMAKE_CXX_STANDARD 20)
-# option(CMAKE_CXX_COMPILER "g++-13")
+# option(CMAKE_CXX_COMPILER "g++-13")   # اگه بالا بگیم با ورژن 20 اجرا بشه ولی کامپایلر قدیمی پشتیبانی نکنه،
+                                        # انگار فقط به یک متغیر ناشناخته مقدار دادیم که هیچ معنی ای برای کامپایلر نداره. برای
+                                        # همین باید حتما مشخص کنیم که میخوایم با کدوم کامپایلر متغیرها رو بخونیم. البته با
+                                        # گذاشتن شون در اینجا، انگار به طور سراسری تنظیم نمی‌شن. چون سایر زیرپوشه ها ارور داد
+                                        # اما با این دستور سراسری ست شد
+                                        # cmake -B build -DCMAKE_CXX_COMPILER=g++-13 -DCMAKE_CXX_STANDARD=20
 
 # TODO1: Add a default ON option for a cache variable named:
 #          TUTORIAL_BUILD_UTILITIES.
@@ -11,8 +16,8 @@ project(Tutorial)
 #        something like:
 #          "Build the Tutorial executable"
 option(TUTORIAL_BUILD_UTILITIES "Build the Tutorial executable" ON) 
-# آرگومان های `CACHE STRING` مال دستور `set()` است،‌نه `option`
-# متغیر معمولی میشد، نه کش CACHE STRING(NO 'S') بدون
+                                        # آرگومان های `CACHE STRING` مال دستور `set()` است،‌نه `option`
+                                        # متغیر معمولی میشد، نه کش CACHE STRING(NO 'S') بدون
 
 
 # TODO2: Add a conditional statement around add_subdirectory(Tutorial). Only
