@@ -11,6 +11,7 @@ target_sources(MathFunctions
 )
 
 # TODO2: Add a compile feature for C++20 support to MathFunctions
+target_compile_features(MathFunctions PRIVATE cxx_std_20)
 
 # TODO3: Add a conditional which checks TUTORIAL_USE_STD_SQRT and if
 #        ON, set a compile definition on MathFunctions of the same name
