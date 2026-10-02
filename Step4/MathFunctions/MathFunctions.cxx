@@ -34,8 +34,9 @@ double sqrt(double x)
   //        instead of mysqrt
   #ifdef TUTORIAL_USE_STD_SQRT
     return std::sqrt(x);
-  #else
-    return mysqrt(x);
   #endif
+  // #else
+    return mysqrt(x);
+  // #endif
 }
 }
