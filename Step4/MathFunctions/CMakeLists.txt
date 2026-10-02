@@ -16,5 +16,5 @@ target_compile_features(MathFunctions PRIVATE cxx_std_20)
 # TODO3: Add a conditional which checks TUTORIAL_USE_STD_SQRT and if
 #        ON, set a compile definition on MathFunctions of the same name
 if(TUTORIAL_USE_STD_SQRT)
-  target_compile_definitions(MyFunctions PRIVATE TUTORIAL_USE_STD_SQRT)
+  target_compile_definitions(MathFunctions PRIVATE TUTORIAL_USE_STD_SQRT)
 endif()
