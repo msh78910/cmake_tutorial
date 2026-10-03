@@ -9,7 +9,7 @@
       "cacheVariables": {
         "CMAKE_CXX_COMPILER": "g++-13",
         "$comment": "now cxx standard version is no longer set globally. if it's not set add all, #include <format> won't work",
-        "$comment": "'CMAKE_CXX_STANDARD': '20'",
+        "$comment2": "CMAKE_CXX_STANDARD: 20",
         "TUTORIAL_USE_STD_SQRT": "ON"
       }
     }
