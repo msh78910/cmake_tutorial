@@ -26,6 +26,7 @@ elseif(
   (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 )
   # TODO10: Add the -Wall compile flag to Tutorial
-target_compile_options(Tutorial PRIVATE -Wall)
+target_compile_options(Tutorial PRIVATE -Wall) #  -Werror       # با فعال شدن این دستور، حالا به چیزایی گیر میده که قبلا گیر نمی داد
+message("hi my friend!")
 
 endif()
