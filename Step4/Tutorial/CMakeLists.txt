@@ -19,15 +19,13 @@ if(
   (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC") OR
   (CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
 )
-
   # TODO9: Add the /W3 compile flag to Tutorial
-
+target_compile_options(Tutorial PRIVATE /W3)
 elseif(
   (CMAKE_CXX_COMPILER_ID STREQUAL "GNU") OR
   (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 )
-
   # TODO10: Add the -Wall compile flag to Tutorial
-
+target_compile_options(Tutorial PRIVATE -Wall)
 
 endif()
