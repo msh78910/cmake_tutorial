@@ -10,6 +10,9 @@ target_sources(Tutorial
 target_link_libraries(Tutorial
   PRIVATE
     MathFunctions
+    VendorLib                             # اگر چه توی یک پوشه دیگه است و این اسم اینجا هیچ رفرنسی نداره، اما میشه خالی
+                                          # بگذاریمش همینجا. وقتی که همه فایل های سی‌میک به هم وصل بشن، مالکش پیدا میشه
+                                          # به هیچ include() ای هم نیازی نیست. اون برای ماژول های داخلی cmake است. نه اینجور چیزا
 )
 
 # TODO4: Add a compile feature for C++20 support to Tutorial
