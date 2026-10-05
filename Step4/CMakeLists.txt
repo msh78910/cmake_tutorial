@@ -14,3 +14,10 @@ endif()
 
 add_subdirectory(MathFunctions)
 add_subdirectory(Vendor)
+
+# نکته بسیار مهم:
+# وقتی فایل Presets داریم، کامپایل کردن cmake با دستور قدیمی
+# cmake -B build
+# باعث نمی شه که بصورت خودکار از کامپایلر g++
+# یا ورژن 20 استاندارد زبان استفاده کنه
+# از این به بعد همیشه باید حواسم باشه با cmake --preset <name> پیکربندی کنم
