@@ -2,7 +2,7 @@ add_library(VendorLib INTERFACE)            # معنی این چیه؟ مگه ا
                                             # پس چرا گفته فقط هدرهاش به سایرین نشان داده بشه؟ (برداشتم اصلا درسته؟)
                                             # طبق فصل ۵ معنیش اینه که این کتابخانه در دسته INTERFACE_LIBRARY قرارمی‌گیره
                                             # یه گونه کتابخانه کامله که هدفش کلا اینه که دستورالعمل بده به سایرین، 
-                                            ‌# نه اینکه خودش پیاده سازی داشته باشه. همه صفاتش هم باید interface باشن
+                                            # نه اینکه خودش پیاده سازی داشته باشه. همه صفاتش هم باید interface باشن
 target_compile_definitions(VendorLib INTERFACE TUTORIAL_USE_VENDORLIB)
 
 # TODO11: Add the include directory to VendorLib
@@ -25,4 +25,4 @@ target_link_directories(VendorLib INTERFACE lib)            # این چرا فق
 #         FILES       include/Vendor.h
 # )
 
-target_link_libraries(VendorLib INTERFACE )
+target_link_libraries(VendorLib INTERFACE Vendor)       # این Vendor خالی، به Vendor.o ای اشاره میکنه که در پوشه Vendor ساختیم
