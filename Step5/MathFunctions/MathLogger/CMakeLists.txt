@@ -7,7 +7,8 @@ add_library(MathLogger INTERFACE)
 target_sources(MathLogger
     INTERFACE
         FILE_SET HEADERS
-        FILES
+        FILES                                       # حتی نیازی به آوردن لیست فایل ها نیست، وقتی در header-only INTERFACE library
+                                                    # قرار نیست هدر ها نصب بشن
             MathFormatting.h
             MathLogger.h
             MathOutput.h
