@@ -3,12 +3,13 @@
 
 // TODO5: Replace <iostream> with <MathLogger.h>
 
-#include <iostream>
+// #include <iostream>
+#include <MathLogger.h>
 
 namespace {
 
 // TODO6: Instantiate a logger inside the anonymous namespace
-
+mathlogger::Logger a_logger;
 // a hack square root calculation using simple operations
 double mysqrt(double x)
 {
@@ -27,7 +28,8 @@ double mysqrt(double x)
     result = result + 0.5 * delta / result;
 
     // TODO7: Use the logger to log the message
-    std::cout << std::format("Computing sqrt of {} to be {}\n", x, result);
+    // std::cout << std::format("Computing sqrt of {} to be {}\n", x, result);
+    a_logger.Log(std::format("Computing sqrt of {} to be {}\n", x, result));
   }
   return result;
 }
