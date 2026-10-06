@@ -2,7 +2,6 @@
 #include <format>
 
 // TODO5: Replace <iostream> with <MathLogger.h>
-
 // #include <iostream>
 #include <MathLogger.h>
 
