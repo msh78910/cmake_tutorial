@@ -9,7 +9,8 @@ target_sources(MathLogger
         FILE_SET HEADERS
         FILES                                       # حتی نیازی به آوردن لیست فایل ها نیست، وقتی در header-only INTERFACE library
                                                     # قرار نیست هدر ها نصب بشن
-            MathFormatting.h
+                                                    
+            MathFormatting.h                        # پس cmake از کجا قراره بفهمه این هدر ها رو باید برای کاری برداره؟
             MathLogger.h
             MathOutput.h
 )
