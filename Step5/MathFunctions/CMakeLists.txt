@@ -18,6 +18,9 @@ target_link_libraries(MathFunctions PRIVATE MathLogger)
 #        MathFunctions library.  Note that their headers will be
 #        exposed in the MathFunctions.h header, and must be available
 #        to consumers.
+target_link_libraries(MathFunctions PUBLIC OpAdd OpMul OpSub)            # منظورش اینه که interface کنمش که از MathFunctions رد شه؟
+                                                                          # هر سه object lib هستن و با پایین دستی ها لینک نمی‌شن 
+                                                                          ‌# و باید به کتابخانه فعلی هم، یا private لینک شن ویا public
 
 target_compile_features(MathFunctions PRIVATE cxx_std_20)
 
@@ -28,3 +31,5 @@ endif()
 # TODO4: Add the MathLogger subdirectory
 add_subdirectory(MathLogger)
 # TODO9: Add the MathExtensions subdirectory
+add_subdirectory(MathExtensions)
+
