@@ -11,17 +11,17 @@ target_sources(MathFunctions
 )
 
 # TODO3: Add a link to MathLogger for the MathFunctions library. Note that
-#        MathLogger will only be used in the MathFunctions implementation,    # این دیگه چه نکته ایه؟ به چه دردی میخوره؟
+#        MathLogger will only be used in the MathFunctions implementation,
 #        not the headers
 target_link_libraries(MathFunctions PRIVATE MathLogger)
 # TODO8: Add links to OpAdd, OpMul, and OpSub libraries for the
 #        MathFunctions library.  Note that their headers will be
 #        exposed in the MathFunctions.h header, and must be available
 #        to consumers.
-target_link_libraries(MathFunctions PUBLIC OpAdd OpMul OpSub)            # منظورش اینه که interface کنمش که از MathFunctions رد شه؟
-                                                                          # هر سه object lib هستن و با پایین دستی ها لینک نمی‌شن 
-                                                                          ‌# و باید به کتابخانه فعلی هم، یا private لینک شن ویا public
-
+target_link_libraries(MathFunctions PUBLIC OpAdd OpMul OpSub)     # منظورش اینه که interface کنمش که از MathFunctions رد شه؟
+                                                                  # هر سه object lib هستن و با پایین دستی ها لینک نمی‌شن 
+                                                                  # و باید به کتابخانه فعلی هم، با private/public لینک شن. اگه public
+                                                                  # باشه، یعنی تنظیماتش نظیر آدرس هدرهاش به پایین دستی ها به ارث برسه
 target_compile_features(MathFunctions PRIVATE cxx_std_20)
 
 if(TUTORIAL_USE_STD_SQRT)
