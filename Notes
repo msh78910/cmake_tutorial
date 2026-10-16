@@ -24,6 +24,10 @@ for add_library(Mylib <type>):
 * INTERFACE: ۵٫۲
 یک library target که خودش build نمی‌شه و artifact نمی‌سازه. اما طرز استفاده موردنیاز برای سایر target ها رو بهشون می‌گه. 
 بنابراین همه property های یک کتابخانه INTERFACE باید خودشون هم INTERFACE باشن 
+چون کتابخانه INTERFACE هست، تمام دستورات target_* روی اون باید با کلمه‌ی INTERFACE بیان (نه PRIVATE نه PUBLIC).
+پس INTERFACE یعنی «این ویژگی رو به مصرف‌کننده‌هام منتقل کن (نه به خودم، چون خودی وجود نداره)».
+
+
 
 #### target_sources():
 انواع ویژگی های property ها:
@@ -37,6 +41,7 @@ for add_library(Mylib <type>):
 #### target_link_library(myProgram PRIVATE myLibrary)
 target_link_directories(MyApp PRIVATE Vendor/lib)
 target_include_directories(MyApp PRIVATE Vendor/include)
+یعنی هرکسی خواست این کتابخانه رو به خودش link کنه، باید مسیرهای include من رو هم به مسیرهای include خودش اضافه کنه
 
 #### install()
 
