@@ -5,6 +5,10 @@
 
 // TODO3: If the TUTORIAL_USE_SSE2 definition is set, include
 //        the <emmintrin.h> header
+// #ifdef TUTORIAL_USE_SSE2             // این شرط باعث میشه که اگه تعریف شده باشه اما مقدارش 0 باشه هم وارد شرط بشه
+#if TUTORIAL_USE_SSE2 == 1              // البته با target_compile_definitions(MathFunctions PRIVATE TUTORIAL_USE_SSE2) خودکار = 1 میشه
+  #include <emmintrin.h>                // اما بعدا اگه مقدارش رو 0 کنیم، بازم وارد #ifdef خواهد شد
+#endif
 
 namespace {
 

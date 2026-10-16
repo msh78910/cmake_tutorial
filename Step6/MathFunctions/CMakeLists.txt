@@ -28,10 +28,16 @@ endif()
 
 # TODO1: Include the CheckIncludeFiles module and use it to check for
 #        the emmintrin.h header.
+include(CheckIncludeFiles)                                                # این فقط بدرد چک کردن وجود هدرهای داخلی کامپایلر می‌خوره.
+                                                                          # نه هدرهای کتابخانه های وارداتی و مال خودم
+check_include_files(emmintrin.h IS_THERE_EMMINTRIN_HEADER LANGUAGE CXX)   # یه اسم متغیر دلخواه میدیم که نتیجه چک رو بریزه توش
 
 # TODO2: If emmintrin.h is available, add a compile definition to MathFunctions
 #        named TUTORIAL_USE_SSE2. This will only be needed by the MathFunctions
 #        implementation file.
+if(IS_THERE_EMMINTRIN_HEADER)
+  target_compile_definitions(MathFunctions PRIVATE TUTORIAL_USE_SSE2)
+endif()
 
 # TODO4: Include the CheckSourceCompiles module and use it to check if the
 #        following program compiles:
