@@ -46,10 +46,23 @@ endif()
 #           int main() {
 #             __builtin_ia32_sqrtsd(v2df{});
 #           }
+include(CheckSourceCompiles)
+check_source_compiles(CXX                                   # توضیحات چیستی این نوع توابع در فایل cmake tutorial 
+"
+    typedef double v2df __attribute__((vector_size(16)));
+    int main() {
+      __builtin_ia32_sqrtsd(v2df{});
+    }
+"
+  HAS_GNU_BUILTIN
+)
 
 # TODO5: If the GNU builtins are available, add a compile definition to
 #        MathFunctions named TUTORIAL_USE_GNU_BUILTIN. This will only be needed
 #        by the MathFunctions implementation file.
+if(HAS_GNU_BUILTIN)
+  target_compile_definitions(MathFunctions PRIVATE TUTORIAL_USE_GNU_BUILTIN)
+endif()
 
 add_subdirectory(MathLogger)
 add_subdirectory(MathExtensions)
