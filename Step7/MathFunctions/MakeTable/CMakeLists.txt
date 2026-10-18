@@ -10,12 +10,12 @@ PRIVATE
 # TODO3: Add a custom command which invokes MakeTable to generate SqrtTable.h
 add_custom_command(
 OUTPUT SqrtTable.h
-COMMAND MakeTable  SqrtTable.h
-DEPENDS MakeTable   # این که اسم executable رو هم بعنوان وابستگی بیاریم، واجب نیست
-                    # اما باعث میشه اگه MakeTable مون آپدیت شد،‌ اینم دوباره اجرا بشه
-                    # میشه یک فایل ورودی هم به command و DEPENDS اضافه کرد:
-                    # COMMANDS MakeTable -i input.txt -o Generated.cxx
-                    # DEPENDS MakeTable input.txt
+COMMAND MakeTable  SqrtTable.h  # ⚠️ با وجود -o ارور میداد. با برداشتن اون، درست کار کرد ‼️. chatgpt گفت تقصیر argv[1] در کد برنامه است
+DEPENDS MakeTable               # این که اسم executable رو هم بعنوان وابستگی بیاریم، واجب نیست
+                                # اما باعث میشه اگه MakeTable مون آپدیت شد،‌ اینم دوباره اجرا بشه
+                                # میشه یک فایل ورودی هم به command و DEPENDS اضافه کرد:
+                                # COMMANDS MakeTable -i input.txt -o Generated.cxx
+                                # DEPENDS MakeTable input.txt
 VERBATIM
 )
 

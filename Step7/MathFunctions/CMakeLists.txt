@@ -14,7 +14,7 @@ target_sources(MathFunctions
 target_link_libraries(MathFunctions
   PRIVATE
     MathLogger
-    sqrt_describer    # 
+    sqrt_describer    # چون فقط در نوشتن کد MathFunctions از هدرهای این کتابخانه استفاده میشه
 
   PUBLIC
     OpAdd
