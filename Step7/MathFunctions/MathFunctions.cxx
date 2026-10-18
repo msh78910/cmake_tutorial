@@ -61,7 +61,8 @@ double fallback_mysqrt(double x)
 
 double table_sqrt(double x)
 {
-  double result = sqrtTable[static_cast<int>(x)];
+  double result = sqrtTable[static_cast<int>(x)];   // داره چکار میکنه؟
+                                                    // cast کردن double به int برای array index تا یکی از عناصر جدولو انتخاب کنه
   // do ten iterations
   for (int i = 0; i < 10; ++i) {
     if (result <= 0) {
