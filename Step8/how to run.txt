@@ -1,0 +1,16 @@
+روش اجرا: 
+1-
+وارد پوشه
+/Step8/build/Tests
+بشو و با دستور 
+ctest -C <config> <Tester_Name>
+تست ها رو اجرا کن. که در مورد ما میشه
+ctest -C Tester
+
+2-
+از همین پوشه اصلی برنامه کد زیر رو بزن
+ctest --test-dir build
+یا برای انجام صرفا یکی از تست ها بزن:
+ctest --test-dir build -R <test_name>
+که در مورد ما میشه
+ctest --test-dir build -R add یا sub یا mul یا sqrt
