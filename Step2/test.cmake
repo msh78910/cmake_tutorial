@@ -30,8 +30,8 @@ message(${char})
 message(${char_2})
 
 # سه مدل اتفاق داریم
-# set(List "hello pretty world)
-# set(list2 "Hello;Pretty;World)
+# set(List "hello pretty world")
+# set(list2 "Hello;Pretty;World")
 # set(list3 hello pretty world)
 # فقط دو مدل پایین، توصیفی از یک لیست هستن و هردو معادل اند.
 # اهمیت این از این بابته، که گاهی لازمه چندین آرگومان به یک تابع مثل
