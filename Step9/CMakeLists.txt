@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
 # TODO9: Add a VERSION parameter to the project() command for version 1.0.0
-project(Tutorial)
+project(Tutorial VERSION 1.0.0)
 
 option(TUTORIAL_BUILD_UTILITIES "Build the Tutorial executable" ON)
 option(TUTORIAL_USE_STD_SQRT "Use std::sqrt" OFF)
