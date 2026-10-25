@@ -22,8 +22,12 @@ endif()
 if(TUTORIAL_BUILD_UTILITIES)
   add_subdirectory(Tutorial)
   # TODO1: Install the Tutorial target
+  install(
+    TARGETS Tutorial
+    )
 
   # TODO3: Add the Tutorial target to the TutorialTargets export
+
 endif()
 
 if(BUILD_TESTING)
@@ -38,7 +42,13 @@ add_subdirectory(MathFunctions)
 # TODO2: Install the MathFunctions, OpAdd, OpMul, OpSub, SqrtTable, and
 #        MathLogger targets. Ensure you name their header file set so the
 #        headers will be installed.
-
+install(
+  TARGETS   MathFunctions OpAdd OpMul OpSub SqrtTable MathLogger 
+  # از آنجایی که MathLogger خودش interface است، فایل مستقلی کامپایل نمی کنه. اما چرا هدرش نیست؟
+  # چون در داخل MathFunction مون include شده و با اون کلا یک فایل کامپایل کرده.
+  # هدرش هم برای مصرف MathFunction ئه. واسه سایرین مخفیه
+  FILE_SET HEADERS          # همه این کتابخانه‌ها یک FILE_SET ای به اسم HEADERS دارن. از کجا می‌فهمه منظورمون کدومشه
+)
 # TODO5: Add the targets from TODO2 to the TutorialTargets export
 
 # TODO6: Install the TutorialTargets export to:
