@@ -5,3 +5,5 @@ include(${CMAKE_CURRENT_LIST_DIR}/TutorialTargets.cmake)
 # برای همین لازمه که هنگام اجرا بهش گفته باشیم که 
 # از `همین پوشه ای که فایل سی‌میک فعلی توشه` یعنی CMAKE_CURRENT_LIST_DIR
 # فایل همسایه ات رو بخون و include کن
+
+# متغیر CMAKE_CURRENT_LIST_DIR که از محل فایل فعلی آدرس relative میده
