@@ -30,7 +30,7 @@ if(TUTORIAL_BUILD_UTILITIES)
     )
 
   # TODO3: Add the Tutorial target to the TutorialTargets export
-  install(
+  install(                          # دستوراتی که کلمه EXPORT دارند:
       TARGETS Tutorial # etc        یک لیست از همه تارگت هایی میسازه که میخوایم براشون فایل دسترسی خارجی بسازیم
       # چون که یک executable هیچ هدری برای به اشتراک گذاری و به ارث رساندن نداره، گزینه FILE_SET هم نداره
       EXPORT TutorialTargets        # فعلا فایل این لیست رو نمی سازه. فقط به یک متغیر اضافه اش می کنه
@@ -68,6 +68,7 @@ install(                                      # افزودن سایر target ه�
   EXPORT TutorialTargets
   FILE_SET HEADERS                            # چی شد؟ این دستور اینجا چکار میکنه؟ چرا بالا نبود؟ ⁉️
                                               # -- بالا توضیح دادم
+                                              # از کجا میفهمه منظور مون FILE_SET HEADERS کدوم target است؟
 )
 
 # TODO6: Install the TutorialTargets export to:
@@ -82,22 +83,54 @@ install(
 )
 
 # TODO10: Include CMakePackageConfigHelpers
-
+include(CMakePackageConfigHelpers)                  # برای ورژن فایل
 
 # TODO11: Use write_basic_package_version_file to write a
 #         TutorialConfigVersion.cmake file to the CMAKE_CURRENT_BINARY_DIR.
 #         The version compatibility should be ExactVersion.
-
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/TutorialConfigVersion.cmake
+  COMPATIBILITY ExactVersion
+)
 
 # TODO12: Add the generated TutorialConfigVersion.cmake file to the file list
-#         of the TODO7 install() command.
-
+#         of the TODO7 install() command.                             یعنی اصلا نفهمیدم این دستور چطور کار میکنه ⁉️
+# install(
+#   FILE          cmake/TutorialConfig.cmake              #   کلمه FILE غلطه. S داره
+#                 ${CMAKE_CURRENT_BINARY_DIR}/TutorialConfigVersion.cmake
+#   DESTINATION   ${CMAKE_INSTALL_LIBDIR}/cmake/Tutorial
+# )
 
 # TODO7: Install the config file at cmake/TutorialConfig.cmake to the same
 #        destination as the TutorialTargets export.
 install(                        # برای separation of concerns این فایل _Config.cmake رو که دستی ساختیم رو دستی نصب می‌کنیم
                                 # تا `target export file` (TutorialTargets export) رو include کنه.
                                 # یک کپی ساده فایل از آدرس بالا به آدرس پایینه
-  FILES cmake/TutorialConfig.cmake
+  # FILES cmake/TutorialConfig.cmake
+  FILES       cmake/TutorialConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/TutorialConfigVersion.cmake
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Tutorial
 )
+
+# مسئله نصب سایر FILE_SET ها بغیر HEADERS. از کجا میفهمه منظور مون FILE_SET کدوم target است؟
+
+# جواب: CMake برای هر یک از `MathFunctions`، `OpAdd` و... جداگانه نگاه می‌کند
+# که آیا با `target_sources(... FILE_SET HEADERS ...)` مجموعه‌ای به نام `HEADERS` یا هر اسم دیگری
+# تعریف کرده‌اید یا خیر. اگر تعریف کرده باشید، فایل‌های آن مجموعه نصب می‌شوند؛
+# اگر تعریف نکرده باشید، برای آن تارگت خاص کاری انجام نمی‌شود
+# (یا خطا می‌دهد اگر تارگت ملزم به اکسپورت باشد).
+
+# 💡 نکته مهم: در یک پروژه واقعی و تمیز، اگه فایل اجرایی از سایر کتابخانه ها
+#   با یک شرط جدا نشده بود، معمولاً این‌ها را ادغام می‌کنند، مثلاً:
+# install(
+#  TARGETS Tutorial
+#  EXPORT TutorialTargets
+#  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}  # 🔴
+#)
+# و برای کتابخانه‌ها:
+#install(
+#  TARGETS MathFunctions OpAdd ...
+#  EXPORT TutorialTargets
+#  FILE_SET HEADERS DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}   # 🔴
+#  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}  # 🔴
+#)
