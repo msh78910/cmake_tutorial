@@ -119,6 +119,15 @@ install(                        # برای separation of concerns این فای�
 # اگر تعریف نکرده باشید، برای آن تارگت خاص کاری انجام نمی‌شود
 # (یا خطا می‌دهد اگر تارگت ملزم به اکسپورت باشد).
 
+# install(TARGETS <target>... [...])
+# هر تارگتی که FILE_SET شون PUBLIC یا INTERFACE باشه، باید در جلوی EXPORT ذکر بشن. با اینکار، اگر یک target ای بیش از یک FILE_SET داشته باشه، تمام FILE_SET های PUBLIC و INTERFACE داخل target، به EXPORT مون اضافه خواهند شد.
+# هر FILE_SET ای با TYPE HEADERS نصب میشه. سایرین Default destination ندارن. پس باید برای هریک آپشن DESTINATION براشون مشخص کنیم
+# The directory structure relative to the file set's base directories is preserved. For example, a file added to the file set as 
+# /blah/include/myproj/here.h
+# with a base directory 
+# /blah/include
+# would be installed to myproj/here.h below the destination.
+
 # 💡 نکته مهم: در یک پروژه واقعی و تمیز، اگه فایل اجرایی از سایر کتابخانه ها
 #   با یک شرط جدا نشده بود، معمولاً این‌ها را ادغام می‌کنند، مثلاً:
 # install(
