@@ -9,7 +9,10 @@ namespace SimpleTest {
 using TestFunc = void (*)();
 
 using Registry = std::map<std::string_view, TestFunc, std::less<>>;
-inline Registry g_registry;
+inline Registry g_registry;     // دلیل inline کردن این متغیر global کتابخانه های header-only ممکنه توسط چندین فایل include بشن.
+                                // و متغیرهای global این کتابخانه ها با اسمی یکسان، در فایل TU نهایی چندین بار declare بشن
+                                // و خطای duplicate definition بگیریم.
+                                // اما با inline کردن به کامپایلر/لینکر می‌گیم که این map در کل پروژه یکسان است
 
 inline Registry& registry()
 {
@@ -52,6 +55,8 @@ inline TestFunc find(std::string_view name)
 #define SIMPLETEST_CONCAT_(a, b) a##b
 #define SIMPLETEST_CONCAT(a, b) SIMPLETEST_CONCAT_(a, b)
 
+// عملیات ساخت یک تابع و ساخت Registrar (از جنس map) و ساخت امضای تابع بدون scopes {}
+// این عبارات، همه شون در یک خط قرار دارن. با کامنت کردن خط بالایی، همه کامنت میشن
 #define TEST(name_literal)                                                    \
   static void SIMPLETEST_CONCAT(_simpletest_fn_, __LINE__)();                 \
   static ::SimpleTest::Registrar SIMPLETEST_CONCAT(_simpletest_reg_,          \
@@ -59,6 +64,8 @@ inline TestFunc find(std::string_view name)
     name_literal, &SIMPLETEST_CONCAT(_simpletest_fn_, __LINE__));             \
   static void SIMPLETEST_CONCAT(_simpletest_fn_, __LINE__)()
 
+// اصل عملیات انجام تست اینجا اتفاق می افته. اگه حاصل شرط true نباشه، اینجاست که ارور دقیق می‌سازه
+// خود expr در if گذاشته میشه، چون حاصلش true/false است. اما متن کدش، در #expr تبدیل به رشته میشه برای چاپ 
 // Minimal assertion
 #define REQUIRE(expr)                                                         \
   do {                                                                        \
