@@ -7,7 +7,9 @@
       "description": "Preset to use with the tutorial",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "TODO4": "Add ${sourceParentDir}/install to CMAKE_PREFIX_PATH",
+        "$TODO4": "Add ${sourceParentDir}/install to CMAKE_PREFIX_PATH.",
+        "$Description": " این محل نصب رو میگه. تا بجاش در خط فرمان بتونیم دستور نصب رو خلاصه بگیم. اما محل ووو رو نمی گه",
+        "CMAKE_PREFIX_PATH": "${sourceParentDir}/install",
         "TUTORIAL_USE_STD_SQRT": "OFF",
         "TUTORIAL_ENABLE_IPO": "OFF"
       }

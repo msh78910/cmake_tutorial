@@ -1,12 +1,16 @@
 #include <MathFunctions.h>
 
 // TODO5: Replace the following 5 lines with #include <SimpleTest.h>
-#define TEST(x) namespace
-#define REQUIRE(x)
-int main()
-{
-}
 
+// #define TEST(x) namespace
+// #define REQUIRE(x)
+// int main()
+// {
+// }
+
+//                      :استفاده کنه SimpleTest های macro کد یک خطی ای که ما اضافه کردیم تا از
+#include <SimpleTest.h>
+// 
 TEST("add")
 {
   REQUIRE(mathfunctions::OpAdd(2.0, 2.0) == 4.0);
