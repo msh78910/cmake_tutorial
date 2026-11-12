@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
   std::cout << std::format("The square of {} is {}\n", outputValue,
                            checkValue);
 
-#ifdef UNPACKAGED_HEADER_FOUNDA
+#ifdef UNPACKAGED_HEADER_FOUND
     std::cout << "### UNPACKAGED_HEADER_FOUND!! ###" << std::endl;
 #endif
 }
