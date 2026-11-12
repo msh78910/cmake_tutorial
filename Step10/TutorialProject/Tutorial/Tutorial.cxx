@@ -6,6 +6,7 @@
 #include <MathFunctions.h>
 
 // TODO11: Include the Unpackaged.h header
+#include <Unpackaged.h>
 
 int main(int argc, char* argv[])
 {
@@ -25,4 +26,8 @@ int main(int argc, char* argv[])
   double const checkValue = mathfunctions::OpMul(outputValue, outputValue);
   std::cout << std::format("The square of {} is {}\n", outputValue,
                            checkValue);
+
+#ifdef UNPACKAGED_HEADER_FOUNDA
+    std::cout << "### UNPACKAGED_HEADER_FOUND!! ###" << std::endl;
+#endif
 }
